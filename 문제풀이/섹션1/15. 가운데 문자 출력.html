@@ -1,0 +1,53 @@
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="../style.css" />
+    <title>섹션1 - 15. 가운데 문자 출력</title>
+  </head>
+  <body>
+    <h1>15. 가운데 문자 출력</h1>
+    <a href="../index.html">뒤로가기</a>
+    <div class="container">
+      <h2>문제</h2>
+      <p>소문자로 된 단어(문자열)가 입력되면 그 단어의 가운데 문자를 출력하는 프로그램을 작성하세 요. 단 단어의 길이가 짝수일 경우 가운데 2개의 문자를 출력합니다.</p>
+
+      <h2>입력 설명</h2>
+      <p>첫 줄에 문자열이 입력된다. 문자열의 길이는 100을 넘지 않습니다.</p>
+
+      <h2>출력설명</h2>
+      <p>첫 줄에 가운데 문자를 출력합니다.</p>
+    </div>
+    <section id="answer-box">
+      <h2>결과</h2>
+    </section>
+
+    <script type="module">
+      const answerBox = document.querySelector("#answer-box");
+      import { timeCheck } from "../timeCheck.js";
+      // 솔루션
+      let solution;
+
+      // 내 답안
+      solution = (str) => {
+        const middleIdx = Math.floor(str.length / 2);
+
+        return str.length % 2 === 0 ? str.substring(middleIdx - 1, middleIdx + 1) : str.substring(middleIdx, middleIdx + 1);
+      };
+
+      // 강사님 답안
+      // solution = () => {};
+
+      const answer = [timeCheck(solution, "study"), timeCheck(solution, "good")];
+
+      answer.map((a, idx) =>
+        answerBox.insertAdjacentHTML(
+          "beforeend",
+          ` <div>
+            <h3>${idx + 1}번 출력</h3>
+            <p>${a}</p>
+          </div>`
+        )
+      );
+    </script>
+  </body>
+</html>

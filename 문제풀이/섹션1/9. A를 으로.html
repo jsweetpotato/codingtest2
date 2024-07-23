@@ -1,0 +1,60 @@
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="../style.css" />
+    <title>섹션1 - 9. A를 #으로</title>
+  </head>
+  <body>
+    <h1>9. A를 #으로</h1>
+    <a href="../index.html">뒤로가기</a>
+    <div class="container">
+      <h2>문제</h2>
+      <p>대문자로 이루어진 영어단어가 입력되면 단어에 포함된 ‘A'를 모두 ’#‘으로 바꾸어 출력하는 프로그램을 작성하세요</p>
+
+      <h2>입력 설명</h2>
+      <p>첫 번째 줄에 문자열이 입력된다.</p>
+
+      <h2>출력설명</h2>
+      <p>첫 번째 줄에 바뀐 단어를 출력한다.</p>
+    </div>
+    <section id="answer-box">
+      <h2>결과</h2>
+    </section>
+
+    <script type="module">
+      const answerBox = document.querySelector("#answer-box");
+      import { timeCheck } from "../timeCheck.js";
+      // 솔루션
+      let solution;
+
+      // 내 답안
+      solution = (args) => args.replace(/(a|A)/g, "#");
+
+      // 강사님 답안 (1)
+      solution = (str) => {
+        let answer = "";
+        for (let x of str) {
+          if (x === "A") answer += "#";
+          else answer += x;
+        }
+      };
+      solution = (str) => {
+        let answer = str;
+        answer = answer.replace(/A/g, "#");
+        return answer;
+      };
+
+      const answer = [timeCheck(solution, "BANANA"), timeCheck(solution, "Apple")];
+
+      answer.map((a, idx) =>
+        answerBox.insertAdjacentHTML(
+          "beforeend",
+          ` <div>
+            <h3>${idx + 1}번 출력</h3>
+            <p>${a}</p>
+          </div>`
+        )
+      );
+    </script>
+  </body>
+</html>

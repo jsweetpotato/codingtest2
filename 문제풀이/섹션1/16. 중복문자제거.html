@@ -1,0 +1,53 @@
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="../style.css" />
+    <title>섹션1 - 16. 중복문자제거</title>
+  </head>
+  <body>
+    <h1>16. 중복문자제거</h1>
+    <a href="../index.html">뒤로가기</a>
+    <div class="container">
+      <h2>문제</h2>
+      <p>소문자로 된 한개의 문자열이 입력되면 중복된 문자를 제거하고 출력하는 프로그램을 작성하 세요. 제거된 문자열의 각 문자는 원래 문자열의 순서를 유지합니다.</p>
+
+      <h2>입력 설명</h2>
+      <p>첫 줄에 문자열이 입력됩니다.</p>
+
+      <h2>출력설명</h2>
+      <p>첫 줄에 중복문자가 제거된 문자열을 출력합니다.</p>
+    </div>
+    <section id="answer-box">
+      <h2>결과</h2>
+    </section>
+
+    <script type="module">
+      const answerBox = document.querySelector("#answer-box");
+      import { timeCheck } from "../timeCheck.js";
+      // 솔루션
+      let solution;
+
+      // 내 답안
+      solution = (str) => {
+        const strString = new Set();
+        [...str].forEach((v) => strString.add(v));
+        return [...strString].join("");
+      };
+
+      // 강사님 답안
+      // solution = () => {};
+
+      const answer = [timeCheck(solution, "ksekkset"), timeCheck(solution, "dsdsdwwwasd")];
+
+      answer.map((a, idx) =>
+        answerBox.insertAdjacentHTML(
+          "beforeend",
+          ` <div>
+            <h3>${idx + 1}번 출력</h3>
+            <p>${a}</p>
+          </div>`
+        )
+      );
+    </script>
+  </body>
+</html>

@@ -1,0 +1,65 @@
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="../style.css" />
+    <title>섹션1 - 12. 대문자로 통일</title>
+  </head>
+  <body>
+    <h1>12. 대문자로 통일</h1>
+    <a href="../index.html">뒤로가기</a>
+    <div class="container">
+      <h2>문제</h2>
+      <p>대문자와 소문자가 같이 존재하는 문자열을 입력받아 대문자로 모두 통일하여 문자열을 출력 하는 프로그램을 작성하세요.</p>
+
+      <h2>입력 설명</h2>
+      <p>첫 줄에 문자열이 입력된다. 문자열의 길이는 100을 넘지 않습니다.</p>
+
+      <h2>출력설명</h2>
+      <p>첫 줄에 대문자로 통일된 문자열이 출력된다.</p>
+    </div>
+    <section id="answer-box">
+      <h2>결과</h2>
+    </section>
+
+    <script type="module">
+      const answerBox = document.querySelector("#answer-box");
+      import { timeCheck } from "../timeCheck.js";
+      // 솔루션
+      let solution;
+
+      // 내 답안
+      solution = (args) => args.toUpperCase();
+
+      // 강사님 답안(1)
+      solution = (s) => {
+        let answer = "";
+        for (let x of s) {
+          if (x === x.toLowerCase()) answer += x.toUpperCase();
+          else answer += x;
+        }
+      };
+
+      // 강사님 답안(2)
+      solution = (s) => {
+        let answer = "";
+        for (let x of s) {
+          let num = x.charCodeAt();
+          if (num >= 97 && num <= 122) answer += String.fromCharCode(num - 32);
+          else answer += x;
+        }
+      };
+
+      const answer = [timeCheck(solution, "ItisTimeToStudy"), timeCheck(solution, "Apple")];
+
+      answer.map((a, idx) =>
+        answerBox.insertAdjacentHTML(
+          "beforeend",
+          ` <div>
+            <h3>${idx + 1}번 출력</h3>
+            <p>${a}</p>
+          </div>`
+        )
+      );
+    </script>
+  </body>
+</html>

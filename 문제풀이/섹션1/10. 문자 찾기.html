@@ -1,0 +1,52 @@
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="../style.css" />
+    <title>섹션1 - 10. 문자 찾기</title>
+  </head>
+  <body>
+    <h1>10. 문자 찾기</h1>
+    <a href="../index.html">뒤로가기</a>
+    <div class="container">
+      <h2>문제</h2>
+      <p>한 개의 문자열을 입력받고, 특정 문자를 입력받아 해당 특정문자가 입력받은 문자열에 몇 개 존재하는지 알아내는 프로그램을 작성하세요. <br />문자열의 길이는 100을 넘지 않습니다.</p>
+
+      <h2>입력 설명</h2>
+      <p>첫 줄에 문자열이 주어지고, 두 번째 줄에 문자가 주어진다.</p>
+
+      <h2>출력설명</h2>
+      <p>첫 줄에 해당 문자의 개수를 출력한다.</p>
+    </div>
+    <section id="answer-box">
+      <h2>결과</h2>
+    </section>
+
+    <script type="module">
+      const answerBox = document.querySelector("#answer-box");
+      import { timeCheck } from "../timeCheck.js";
+      // 솔루션
+      let solution;
+
+      // 내 답안
+      solution = (args) => [...args.matchAll(/(R)/g)].length;
+
+      // 강사님 답안
+      solution = (str) => {
+        let answer = str.split("R").length;
+        return answer - 1;
+      };
+
+      const answer = [timeCheck(solution, "COMPUTERPROGRAMMING"), timeCheck(solution, "Apple")];
+
+      answer.map((a, idx) =>
+        answerBox.insertAdjacentHTML(
+          "beforeend",
+          ` <div>
+            <h3>${idx + 1}번 출력</h3>
+            <p>${a}</p>
+          </div>`
+        )
+      );
+    </script>
+  </body>
+</html>

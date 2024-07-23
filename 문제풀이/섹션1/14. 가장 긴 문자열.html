@@ -1,0 +1,55 @@
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="../style.css" />
+    <title>섹션1 - 14. 가장 긴 문자열</title>
+  </head>
+  <body>
+    <h1>14. 가장 긴 문자열</h1>
+    <a href="../index.html">뒤로가기</a>
+    <div class="container">
+      <h2>문제</h2>
+      <p>N개의 문자열이 입력되면 그 중 가장 긴 문자열을 출력하는 프로그램을 작성하세요.</p>
+
+      <h2>입력 설명</h2>
+      <p>첫 줄에 자연수 N이 주어진다.(3<=N<=30) 두 번째 줄부터 N개의 문자열이 주어진다. 문자열의 길이는 100을 넘지 않습니다. 각 문자열의 길이는 서로 다릅니다.</p>
+
+      <h2>출력설명</h2>
+      <p>첫 줄에 가장 긴 문자열을 출력한다.</p>
+    </div>
+    <section id="answer-box">
+      <h2>결과</h2>
+    </section>
+
+    <script type="module">
+      const answerBox = document.querySelector("#answer-box");
+      import { timeCheck } from "../timeCheck.js";
+      // 솔루션
+      let solution;
+
+      // 내 답안
+      solution = (N, ...args) => {
+        let mostLongString = "";
+        for (let i = 0; i < N; i++) {
+          mostLongString.length < args[i].length && (mostLongString = args[i]);
+        }
+        return mostLongString;
+      };
+
+      // 강사님 답안
+      // solution = () => {};
+
+      const answer = [timeCheck(solution, 5, "teacher", "time", "student", "beautiful", "good")];
+
+      answer.map((a, idx) =>
+        answerBox.insertAdjacentHTML(
+          "beforeend",
+          ` <div>
+            <h3>${idx + 1}번 출력</h3>
+            <p>${a}</p>
+          </div>`
+        )
+      );
+    </script>
+  </body>
+</html>
