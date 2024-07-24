@@ -1,0 +1,74 @@
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="../style.css" />
+    <title>섹션3 - 5. 문자열 압축</title>
+  </head>
+  <body>
+    <live-timer id="elem"></live-timer>
+    <script>
+      elem.addEventListener("tick", (event) => console.log(event.detail));
+    </script>
+    <h1>5. 문자열 압축</h1>
+    <a href="../index.html">뒤로가기</a>
+    <div class="container">
+      <h2>문제</h2>
+      <p>
+        알파벳 대문자로 이루어진 문자열을 입력받아 같은 문자가 연속으로 반복되는 경우 반복되는 문자 바로 오른쪽에 반복 횟수를 표기하는 방법으로 문자열을 압축하는 프로그램을 작성하시 오. 단 반복횟수가
+        1인 경우 생략합니다.
+      </p>
+
+      <div class="table-box"></div>
+
+      <h2>입력 설명</h2>
+      <p>첫 줄에 문자열이 주어진다. 문자열의 길이는 100을 넘지 않는다.</p>
+
+      <h2>출력설명</h2>
+      <p>첫 줄에 압축된 문자열을 출력한다.</p>
+    </div>
+    <section id="answer-box">
+      <h2>결과</h2>
+    </section>
+
+    <script type="module">
+      const answerBox = document.querySelector("#answer-box");
+      import { timeCheck } from "../timeCheck.js";
+      // 솔루션
+      let solution;
+
+      // 내 답안
+      solution = (str) => {
+        const strArr = [...str];
+        let result = "";
+
+        let prevS = strArr[0];
+
+        let count = 1;
+
+        for (let i = 0; i < str.length; i++) {
+          if (strArr[i] !== strArr[i + 1]) {
+            prevS = strArr[i];
+            result += `${prevS}${count > 1 ? count : ""}`;
+            count = 1;
+          } else count++;
+        }
+
+        return result;
+      };
+
+      // 강사님 답안
+      // solution = () => {};
+
+      const answer = [timeCheck(solution, "KKHSSSSSSSE")];
+
+      answer.map((a, idx) =>
+        answerBox.insertAdjacentHTML(
+          "beforeend",
+          ` <div>
+        <h3>${idx + 1}번 답</h3><p>${a}</p>
+      </div>`
+        )
+      );
+    </script>
+  </body>
+</html>

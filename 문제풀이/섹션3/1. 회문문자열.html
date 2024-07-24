@@ -2,24 +2,30 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="../style.css" />
-    <title>섹션2 - 1. 큰 수 출력하기</title>
+    <title>섹션3 - 1. 회문문자열</title>
   </head>
   <body>
     <live-timer id="elem"></live-timer>
     <script>
       elem.addEventListener("tick", (event) => console.log(event.detail));
     </script>
-    <h1>1. 큰 수 출력하기</h1>
+    <h1>1. 회문문자열</h1>
     <a href="../index.html">뒤로가기</a>
     <div class="container">
       <h2>문제</h2>
-      <p>N(1<=N<=100)개의 정수를 입력받아, 자신의 바로 앞 수보다 큰 수만 출력하는 프로그램을 작 성하세요.(첫 번째 수는 무조건 출력한다)</p>
+      <p>
+        앞에서 읽을 때나 뒤에서 읽을 때나 같은 문자열을 회문 문자열이라고 합니다. 문자열이 입력되면 해당 문자열이 회문 문자열이면 "YES", 회문 문자열이 아니면 “NO"를 출력 하는 프로그램을 작성하세요.
+        <br />
+        단 회문을 검사할 때 대소문자를 구분하지 않습니다.
+      </p>
+
+      <div class="table-box"></div>
 
       <h2>입력 설명</h2>
-      <p>첫 줄에 자연수 N이 주어지고, 그 다음 줄에 N개의 정수가 입력된다.</p>
+      <p>첫 줄에 정수 길이 100을 넘지 않는 공백이 없는 문자열이 주어집니다.</p>
 
       <h2>출력설명</h2>
-      <p>자신의 바로 앞 수보다 큰 수만 한 줄로 출력한다.</p>
+      <p>첫 번째 줄에 회문 문자열인지의 결과를 YES 또는 NO로 출력합니다.</p>
     </div>
     <section id="answer-box">
       <h2>결과</h2>
@@ -32,20 +38,20 @@
       let solution;
 
       // 내 답안
-      solution = (...arg) => {
-        let prev = 0;
-        const result = [];
-        arg.forEach((v) => {
-          if (prev < v) result.push(v);
-          prev = v;
-        });
+      solution = (str) => {
+        let result = "NO";
+        let reverse = [];
+        [...str].forEach((s) => reverse.unshift(s));
+
+        if (str.toLowerCase() === reverse.join("").toLowerCase()) result = "YES";
+
         return result;
       };
 
       // 강사님 답안
       // solution = () => {};
 
-      const answer = [timeCheck(solution, 7, 3, 9, 5, 6, 12), timeCheck(solution, 4, 2, 1, 1, 7, 3), timeCheck(solution, 0, 6, 7, 9, 10, 12)];
+      const answer = [timeCheck(solution, "gooG")];
 
       answer.map((a, idx) =>
         answerBox.insertAdjacentHTML(
