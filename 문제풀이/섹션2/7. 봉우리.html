@@ -41,7 +41,6 @@
       // 내 답안
       solution = (length, nums) => {
         let result = 0;
-        const highlight = [];
 
         for (let i = 0; i < nums.length; i++) {
           const left = i % length === 0 ? 0 : nums[i - 1];
@@ -50,12 +49,14 @@
           const bottom = nums[i + length] || 0;
           if (nums[i] > left && nums[i] > right && nums[i] > top && nums[i] > bottom) {
             result++;
-            highlight.push(i);
           }
         }
 
         return result;
       };
+
+      // 강사님 답안
+      // solution = () => {};
 
       const render = (length, arr, hightlight) => {
         const box = document.querySelector(".table-box");
@@ -78,9 +79,6 @@
 
         box.insertAdjacentElement("beforeend", table);
       };
-
-      // 강사님 답안
-      // solution = () => {};
 
       const answer = [timeCheck(solution, 5, [5, 3, 7, 2, 3, 3, 7, 1, 6, 1, 7, 2, 5, 3, 4, 4, 3, 6, 4, 1, 8, 7, 3, 5, 2])];
 

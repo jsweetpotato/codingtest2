@@ -56,6 +56,28 @@
         return result;
       };
 
+      solution = (str) => {
+        let result = "";
+        let count = 1;
+
+        for (let i = 0; i < str.length; i++) {
+          console.log(str.indexOf(str[i]), str[i]);
+
+          if (str.indexOf(str[i]) === i) {
+            result += str[i];
+            count++;
+          } else {
+            if (str[i] === str[i + 1]) count++;
+            else {
+              result += count;
+              count = 0;
+            }
+          }
+        }
+
+        return result;
+      };
+
       // 강사님 답안
       // solution = () => {};
 

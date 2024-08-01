@@ -1,0 +1,64 @@
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="../style.css" />
+    <title>섹션5 - 1. 두 배열 합치기</title>
+  </head>
+  <body>
+    <live-timer id="elem"></live-timer>
+    <script>
+      elem.addEventListener("tick", (event) => console.log(event.detail));
+    </script>
+    <h1>1. 두 배열 합치기</h1>
+    <a href="../index.html">뒤로가기</a>
+    <div class="container">
+      <h2>문제</h2>
+      <p>오름차순으로 정렬이 된 두 배열이 주어지면 두 배열을 오름차순으로 합쳐 출력하는 프로그램 을 작성하세요.</p>
+
+      <div class="table-box"></div>
+
+      <h2>입력 설명</h2>
+      <p>
+        첫 번째 줄에 첫 번째 배열의 크기 N(1<=N<=100)이 주어집니다. <br />
+        두 번째 줄에 N개의 배열 원소가 오름차순으로 주어집니다.<br />
+        세 번째 줄에 두 번째 배열의 크기 M(1<=M<=100)이 주어집니다.<br />
+        네 번째 줄에 M개의 배열 원소가 오름차순으로 주어집니다.<br />
+        각 리스트의 원소는 int형 변수의 크기를 넘지 않습니다.
+      </p>
+
+      <h2>출력설명</h2>
+      <p>오름차순으로 정렬된 배열을 출력합니다.</p>
+    </div>
+    <section id="answer-box">
+      <h2>결과</h2>
+    </section>
+
+    <script type="module">
+      const answerBox = document.querySelector("#answer-box");
+      import { timeCheck } from "../timeCheck.js";
+      // 솔루션
+      let solution;
+
+      // 내 답안
+      solution = (K, arr) => {
+        let answer = 0;
+
+        return answer;
+      };
+
+      // 강사님 답안
+      // solution = () => {};
+
+      const answer = [timeCheck(solution, [1, 3, 5], [2, 3, 6, 7, 9])];
+
+      answer.map((a, idx) =>
+        answerBox.insertAdjacentHTML(
+          "beforeend",
+          ` <div>
+        <h3>${idx + 1}번 답</h3><p>${a}</p>
+      </div>`
+        )
+      );
+    </script>
+  </body>
+</html>

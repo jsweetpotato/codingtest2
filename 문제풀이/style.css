@@ -80,6 +80,7 @@ td {
 p {
   margin-top: 0;
 }
+
 #answer-box {
   margin-block: 24px;
   padding: 24px;
@@ -89,6 +90,10 @@ p {
 
 #answer-box h2 {
   margin-top: 0;
+}
+
+#answer-box p {
+  word-break: break-all;
 }
 
 #answer-box div:not(:last-child) {
