@@ -37,7 +37,18 @@
       };
 
       // 강사님 답안
-      // solution = () => {};
+      solution = (length, ...s) => {
+        let answer;
+        let max = Number.MIN_SAFE_INTEGER;
+
+        for (let x of s) {
+          if (x.length > max) {
+            max = x.length;
+            answer = x;
+          }
+        }
+        return answer;
+      };
 
       const answer = [timeCheck(solution, 5, "teacher", "time", "student", "beautiful", "good")];
 

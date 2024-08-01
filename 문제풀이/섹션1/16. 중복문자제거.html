@@ -35,7 +35,27 @@
       };
 
       // 강사님 답안
-      // solution = () => {};
+      solution = (s) => {
+        let answer = "";
+        for (let i = 0; i < s.length; i++) {
+          console.log(s[i], i, s.indexOf(s[i]));
+          if (s.indexOf(s[i]) === i) answer += s[i];
+        }
+        return answer;
+      };
+
+      // + 문자 카운팅
+      solution = (s) => {
+        let answer = 0;
+        let pos = s.indexOf("k");
+
+        while (pos !== -1) {
+          answer++;
+          pos = s.indexOf("k", pos + 1);
+        }
+
+        return answer;
+      };
 
       const answer = [timeCheck(solution, "ksekkset"), timeCheck(solution, "dsdsdwwwasd")];
 

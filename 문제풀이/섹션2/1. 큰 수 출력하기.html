@@ -33,7 +33,7 @@
 
       // 내 답안
       solution = (...arg) => {
-        let prev = 0;
+        let prev = Number.MAX_SAFE_INTEGER;
         const result = [];
         arg.forEach((v) => {
           if (prev < v) result.push(v);
@@ -43,7 +43,14 @@
       };
 
       // 강사님 답안
-      // solution = () => {};
+      solution = (...arr) => {
+        let answer = [];
+        answer.push(arr[0]);
+        for (let i = 1; i < arr.length; i++) {
+          if (arr[i] > arr[i - 1]) answer.push(arr[i]);
+        }
+        return answer;
+      };
 
       const answer = [timeCheck(solution, 7, 3, 9, 5, 6, 12), timeCheck(solution, 4, 2, 1, 1, 7, 3), timeCheck(solution, 0, 6, 7, 9, 10, 12)];
 

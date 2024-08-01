@@ -73,21 +73,31 @@
       let solution;
 
       // 내 답안
-      solution = (count, scores) => {
+      solution = (length, scores) => {
         let result = 0;
-        let prev = 0;
-        for (let i = 0; i < count; i++) {
-          if (scores[i] === 1) prev++;
-          else prev = 0;
+        let cnt = 0;
+        for (let i = 0; i < length; i++) {
+          if (scores[i] === 1) cnt++;
+          else cnt = 0;
 
-          result += prev;
+          result += cnt;
         }
 
         return result;
       };
 
       // 강사님 답안
-      // solution = () => {};
+      solution = (_, arr) => {
+        let answer = 0,
+          cnt = 0;
+        for (let x of arr) {
+          if (x === 1) {
+            cnt++;
+            answer += cnt;
+          } else cnt = 0;
+        }
+        return answer;
+      };
 
       const answer = [timeCheck(solution, 10, [1, 0, 1, 1, 1, 0, 0, 1, 1, 0])];
 

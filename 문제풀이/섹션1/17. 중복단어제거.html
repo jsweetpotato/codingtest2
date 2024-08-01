@@ -31,14 +31,22 @@
       let solution;
 
       // 내 답안
-      solution = (...args) => {
+      solution = (...str) => {
         const strSet = new Set();
-        args.forEach((v) => strSet.add(v));
+        str.forEach((v) => strSet.add(v));
         return [...strSet];
       };
 
       // 강사님 답안
-      // solution = () => {};
+      solution = (...str) => {
+        let answer;
+
+        // filter 조건이 참을 반환하는것만 걸러냄
+        answer = str.filter((v, i) => str.indexOf(v) === i);
+        console.log(str.indexOf("good"));
+
+        return answer;
+      };
 
       const answer = [timeCheck(solution, "good", "time", "good", "time", "student")];
 
