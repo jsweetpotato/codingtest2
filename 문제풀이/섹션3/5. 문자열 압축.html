@@ -20,10 +20,10 @@
 
       <div class="table-box"></div>
 
-      <h2>입력 설명</h2>
+      <h3>입력 설명</h3>
       <p>첫 줄에 문자열이 주어진다. 문자열의 길이는 100을 넘지 않는다.</p>
 
-      <h2>출력설명</h2>
+      <h3>출력설명</h3>
       <p>첫 줄에 압축된 문자열을 출력한다.</p>
     </div>
     <section id="answer-box">
@@ -32,7 +32,7 @@
 
     <script type="module">
       const answerBox = document.querySelector("#answer-box");
-      import { timeCheck } from "../timeCheck.js";
+      import { timeCheck, render } from "../timeCheck.js";
       // 솔루션
       let solution;
 
@@ -83,14 +83,7 @@
 
       const answer = [timeCheck(solution, "KKHSSSSSSSE")];
 
-      answer.map((a, idx) =>
-        answerBox.insertAdjacentHTML(
-          "beforeend",
-          ` <div>
-        <h3>${idx + 1}번 답</h3><p>${a}</p>
-      </div>`
-        )
-      );
+      render(answer, answerBox);
     </script>
   </body>
 </html>

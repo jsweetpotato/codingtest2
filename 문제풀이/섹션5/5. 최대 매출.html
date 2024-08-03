@@ -13,23 +13,21 @@
     <a href="../../index.html">뒤로가기</a>
     <div class="container">
       <h2>문제</h2>
+      <p>현수의 아빠는 제과점을 운영합니다. 현수 아빠는 현수에게 N일 동안의 매출기록을 주고 연속 된 K일 동안의 최대 매출액이 얼마인지 구하라고 했습니다.</p>
       <p>
-        현수의 아빠는 제과점을 운영합니다. 현수 아빠는 현수에게 N일 동안의 매출기록을 주고 연속 된 K일 동안의 최대 매출액이 얼마인지 구하라고 했습니다. <br />
         만약 N=10이고 10일 간의 매출기록이 아래와 같습니다. 이때 K=3이면 <br />
-        12 15 11 20 25 10 20 19 13 15 <br />
-        연속된 3일간의 최대 매출액은 11+20+25=56만원입니다. <br />
-        여러분이 현수를 도와주세요.
+        12 15 11 20 25 10 20 19 13 15
       </p>
+      <p>연속된 3일간의 최대 매출액은 11+20+25=56만원입니다.</p>
+      <p>여러분이 현수를 도와주세요.</p>
 
       <div class="table-box"></div>
 
-      <h2>입력 설명</h2>
-      <p>
-        첫 줄에 N(5<=N<=100,000)과 K(2<=K<=N)가 주어집니다. <br />
-        두 번째 줄에 N개의 숫자열이 주어집니다. 각 숫자는 500이하의 음이 아닌 정수입니다.
-      </p>
+      <h3>입력 설명</h3>
+      <p>첫 줄에 N(5<=N<=100,000)과 K(2<=K<=N)가 주어집니다.</p>
+      <p>두 번째 줄에 N개의 숫자열이 주어집니다. 각 숫자는 500이하의 음이 아닌 정수입니다.</p>
 
-      <h2>출력설명</h2>
+      <h3>출력설명</h3>
       <p>첫 줄에 최대 매출액을 출력합니다.</p>
     </div>
     <section id="answer-box">
@@ -38,7 +36,7 @@
 
     <script type="module">
       const answerBox = document.querySelector("#answer-box");
-      import { timeCheck } from "../timeCheck.js";
+      import { timeCheck, render } from "../timeCheck.js";
       // 솔루션
       let solution;
 
@@ -64,14 +62,7 @@
 
       const answer = [timeCheck(solution, 3, [12, 15, 11, 20, 25, 10, 20, 19, 13, 15])];
 
-      answer.map((a, idx) =>
-        answerBox.insertAdjacentHTML(
-          "beforeend",
-          ` <div>
-        <h3>${idx + 1}번 답</h3><p>${a}</p>
-      </div>`
-        )
-      );
+      render(answer, answerBox);
     </script>
   </body>
 </html>

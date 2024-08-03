@@ -14,10 +14,10 @@
         이들 중 홀수는 77, 41, 53, 85이므로 그 합은 77 + 41 + 53 + 85 = 256 이 되고, 41 < 53 < 77 < 85 이므로 홀수들 중 최소값은 41이 된다.
       </p>
 
-      <h2>입력 설명</h2>
+      <h3>입력 설명</h3>
       <p>첫 번째 줄에 자연수 7개가 주어진다. 주어지는 자연수는 100보다 작다. 홀수가 한 개 이상 반드시 존재한다.</p>
 
-      <h2>출력설명</h2>
+      <h3>출력설명</h3>
       <p>첫째 줄에 홀수들의 합을 출력하고, 둘째 줄에 홀수들 중 최소값을 출력한다.</p>
     </div>
     <section id="answer-box">
@@ -26,12 +26,12 @@
 
     <script type="module">
       const answerBox = document.querySelector("#answer-box");
-      import { timeCheck } from "../timeCheck.js";
+      import { timeCheck, render } from "../timeCheck.js";
       // 솔루션
       let solution;
 
       // 내 답안
-      solution = (...args) => {
+      solution = (args) => {
         let sum = 0;
         let min = 99;
         for (let i = 0; i < args.length; i++) {
@@ -45,18 +45,11 @@
       };
 
       // 강사님 답안
-      solution = () => {};
+      // solution = () => {};
 
-      const answer = [timeCheck(solution, 12, 77, 38, 41, 53, 92, 85), timeCheck(solution, 10, 6, 4, 3, 9, 13, 6), timeCheck(solution, 97, 5, 61, 34, 6, 12, 11)];
+      const answer = [timeCheck(solution, [12, 77, 38, 41, 53, 92, 85]), timeCheck(solution, [10, 6, 4, 3, 9, 13, 6]), timeCheck(solution, [97, 5, 61, 34, 6, 12, 11])];
 
-      answer.map((a, idx) =>
-        answerBox.insertAdjacentHTML(
-          "beforeend",
-          ` <div>
-        <h3>${idx + 1}번 답</h3><p>${a}</p>
-      </div>`
-        )
-      );
+      render(answer, answerBox);
     </script>
   </body>
 </html>

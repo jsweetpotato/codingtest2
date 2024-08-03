@@ -14,6 +14,7 @@
     <div class="container">
       <h2>문제</h2>
       <p>5*5 격자판에 아래롸 같이 숫자가 적혀있습니다.</p>
+
       <div class="격자판">
         <div class="top"></div>
         <div class="bottom"></div>
@@ -57,13 +58,13 @@
           </tr>
         </table>
       </div>
-      <br />
+
       <p>N*N의 격자판이 주어지면 각 행의 합, 각 열의 합, 두 대각선의 합 중 가 장 큰 합을 출력합 니다.</p>
 
-      <h2>입력 설명</h2>
+      <h3>입력 설명</h3>
       <p>첫 줄에 자연수 N이 주어진다.(1<=N<=50) 두 번째 줄부터 N줄에 걸쳐 각 줄에 N개의 자연수가 주어진다. 각 자연수는 100을 넘지 않는 다.</p>
 
-      <h2>출력설명</h2>
+      <h3>출력설명</h3>
       <p>최대합을 출력합니다.</p>
     </div>
     <section id="answer-box">
@@ -72,7 +73,7 @@
 
     <script type="module">
       const answerBox = document.querySelector("#answer-box");
-      import { timeCheck } from "../timeCheck.js";
+      import { timeCheck, render } from "../timeCheck.js";
       // 솔루션
       let solution;
 
@@ -126,14 +127,7 @@
         ])
       ];
 
-      answer.map((a, idx) =>
-        answerBox.insertAdjacentHTML(
-          "beforeend",
-          ` <div>
-        <h3>${idx + 1}번 답</h3><p>${a}</p>
-      </div>`
-        )
-      );
+      render(answer, answerBox);
     </script>
   </body>
 </html>

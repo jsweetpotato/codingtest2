@@ -11,10 +11,10 @@
       <h2>문제</h2>
       <p>100이하의 자연수 A, B, C를 입력받아 세 수 중 가장 작은 값을 출력하는 프로그램을 작성하세요.(정렬을 사용하면 안됩니다)</p>
 
-      <h2>입력 설명</h2>
+      <h3>입력 설명</h3>
       <p>첫 번째 줄에 100이하의 세 자연수가 입력된다.</p>
 
-      <h2>출력설명</h2>
+      <h3>출력설명</h3>
       <p>첫 번째 줄에 가장 작은 수를 출력한다.</p>
     </div>
     <section id="answer-box">
@@ -23,7 +23,7 @@
 
     <script type="module">
       const answerBox = document.querySelector("#answer-box");
-      import { timeCheck } from "../timeCheck.js";
+      import { timeCheck, render } from "../timeCheck.js";
       // 솔루션
       // function solution(a, b, c) {
       //   let mininum = a;
@@ -52,14 +52,7 @@
 
       const answer = [timeCheck(solution, 6, 5, 11), timeCheck(solution, 4, 6, 1), timeCheck(solution, 2, 4, 6)];
 
-      answer.map((a, idx) =>
-        answerBox.insertAdjacentHTML(
-          "beforeend",
-          ` <div>
-        <h3>${idx + 1}번 답</h3><p>${a}</p>
-      </div>`
-        )
-      );
+      render(answer, answerBox);
     </script>
   </body>
 </html>

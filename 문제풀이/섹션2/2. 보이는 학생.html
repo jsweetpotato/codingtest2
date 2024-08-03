@@ -18,10 +18,10 @@
         (앞에 서 있는 사람들보다 크면 보이고, 작거나 같으면 보이지 않습니다.)
       </p>
 
-      <h2>입력 설명</h2>
+      <h3>입력 설명</h3>
       <p>첫 줄에 정수 N이 입력된다. 그 다음줄에 N명의 학생의 키가 앞에서부터 순서대로 주어진다.</p>
 
-      <h2>출력설명</h2>
+      <h3>출력설명</h3>
       <p>선생님이 볼 수 있는 최대학생수를 출력한다.</p>
     </div>
     <section id="answer-box">
@@ -30,12 +30,12 @@
 
     <script type="module">
       const answerBox = document.querySelector("#answer-box");
-      import { timeCheck } from "../timeCheck.js";
+      import { timeCheck, render } from "../timeCheck.js";
       // 솔루션
       let solution;
 
       // 내 답안
-      solution = (...arg) => {
+      solution = (arg) => {
         let max = arg[0];
         let answer = 1;
         arg.forEach((v) => {
@@ -48,7 +48,7 @@
       };
 
       // 강사님 답안
-      solution = (...arr) => {
+      solution = (arr) => {
         let answer = 1,
           max = arr[0];
         for (let i = 1; i < arr.length; i++) {
@@ -60,16 +60,9 @@
         return answer;
       };
 
-      const answer = [timeCheck(solution, 130, 135, 148, 140, 145, 150, 150, 153)];
+      const answer = [timeCheck(solution, [130, 135, 148, 140, 145, 150, 150, 153])];
 
-      answer.map((a, idx) =>
-        answerBox.insertAdjacentHTML(
-          "beforeend",
-          ` <div>
-        <h3>${idx + 1}번 답</h3><p>${a}</p>
-      </div>`
-        )
-      );
+      render(answer, answerBox);
     </script>
   </body>
 </html>

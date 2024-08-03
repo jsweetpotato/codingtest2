@@ -11,10 +11,10 @@
       <h2>문제</h2>
       <p>대문자로 이루어진 영어단어가 입력되면 단어에 포함된 ‘A'를 모두 ’#‘으로 바꾸어 출력하는 프로그램을 작성하세요</p>
 
-      <h2>입력 설명</h2>
+      <h3>입력 설명</h3>
       <p>첫 번째 줄에 문자열이 입력된다.</p>
 
-      <h2>출력설명</h2>
+      <h3>출력설명</h3>
       <p>첫 번째 줄에 바뀐 단어를 출력한다.</p>
     </div>
     <section id="answer-box">
@@ -23,7 +23,7 @@
 
     <script type="module">
       const answerBox = document.querySelector("#answer-box");
-      import { timeCheck } from "../timeCheck.js";
+      import { timeCheck, render } from "../timeCheck.js";
       // 솔루션
       let solution;
 
@@ -46,15 +46,7 @@
 
       const answer = [timeCheck(solution, "BANANA"), timeCheck(solution, "Apple")];
 
-      answer.map((a, idx) =>
-        answerBox.insertAdjacentHTML(
-          "beforeend",
-          ` <div>
-            <h3>${idx + 1}번 출력</h3>
-            <p>${a}</p>
-          </div>`
-        )
-      );
+      render(answer, answerBox);
     </script>
   </body>
 </html>

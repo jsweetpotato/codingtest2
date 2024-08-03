@@ -20,10 +20,10 @@
 
       <div class="table-box"></div>
 
-      <h2>입력 설명</h2>
+      <h3>입력 설명</h3>
       <p>첫 줄에 자연수의 개수 N(3<=N<=100)이 주어지고, 그 다음 줄에 N개의 자연수가 주어진다. 각 자연수의 크기는 10,000,000를 넘지 않는다.</p>
 
-      <h2>출력설명</h2>
+      <h3>출력설명</h3>
       <p>자릿수의 합이 최대인 자연수를 출력한다.</p>
     </div>
     <section id="answer-box">
@@ -32,12 +32,12 @@
 
     <script type="module">
       const answerBox = document.querySelector("#answer-box");
-      import { timeCheck } from "../timeCheck.js";
+      import { timeCheck, render } from "../timeCheck.js";
       // 솔루션
       let solution;
 
       // 내 답안
-      solution = (length, ...arg) => {
+      solution = (length, arg) => {
         let result = [];
         let max = 0;
 
@@ -56,16 +56,9 @@
       // 강사님 답안
       // solution = () => {};
 
-      const answer = [timeCheck(solution, 7, 128, 460, 603, 40, 521, 137, 123)];
+      const answer = [timeCheck(solution, 7, [128, 460, 603, 40, 521, 137, 123])];
 
-      answer.map((a, idx) =>
-        answerBox.insertAdjacentHTML(
-          "beforeend",
-          ` <div>
-        <h3>${idx + 1}번 답</h3><p>${a}</p>
-      </div>`
-        )
-      );
+      render(answer, answerBox);
     </script>
   </body>
 </html>

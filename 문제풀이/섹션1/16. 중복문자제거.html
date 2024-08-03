@@ -11,10 +11,10 @@
       <h2>문제</h2>
       <p>소문자로 된 한개의 문자열이 입력되면 중복된 문자를 제거하고 출력하는 프로그램을 작성하 세요. 제거된 문자열의 각 문자는 원래 문자열의 순서를 유지합니다.</p>
 
-      <h2>입력 설명</h2>
+      <h3>입력 설명</h3>
       <p>첫 줄에 문자열이 입력됩니다.</p>
 
-      <h2>출력설명</h2>
+      <h3>출력설명</h3>
       <p>첫 줄에 중복문자가 제거된 문자열을 출력합니다.</p>
     </div>
     <section id="answer-box">
@@ -23,7 +23,7 @@
 
     <script type="module">
       const answerBox = document.querySelector("#answer-box");
-      import { timeCheck } from "../timeCheck.js";
+      import { timeCheck, render } from "../timeCheck.js";
       // 솔루션
       let solution;
 
@@ -45,29 +45,21 @@
       };
 
       // + 문자 카운팅
-      solution = (s) => {
-        let answer = 0;
-        let pos = s.indexOf("k");
+      // solution = (s) => {
+      //   let answer = 0;
+      //   let pos = s.indexOf("k");
 
-        while (pos !== -1) {
-          answer++;
-          pos = s.indexOf("k", pos + 1);
-        }
+      //   while (pos !== -1) {
+      //     answer++;
+      //     pos = s.indexOf("k", pos + 1);
+      //   }
 
-        return answer;
-      };
+      //   return answer;
+      // };
 
       const answer = [timeCheck(solution, "ksekkset"), timeCheck(solution, "dsdsdwwwasd")];
 
-      answer.map((a, idx) =>
-        answerBox.insertAdjacentHTML(
-          "beforeend",
-          ` <div>
-            <h3>${idx + 1}번 출력</h3>
-            <p>${a}</p>
-          </div>`
-        )
-      );
+      render(answer, answerBox);
     </script>
   </body>
 </html>

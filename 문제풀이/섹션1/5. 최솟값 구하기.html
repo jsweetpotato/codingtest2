@@ -11,10 +11,10 @@
       <h2>문제</h2>
       <p>7개의 수가 주어지면 그 숫자 중 가장 작은 수를 출력하는 프로그램을 작성하세요.</p>
 
-      <h2>입력 설명</h2>
+      <h3>입력 설명</h3>
       <p>첫 번째 줄에 7개의 수가 주어진다.</p>
 
-      <h2>출력설명</h2>
+      <h3>출력설명</h3>
       <p>첫 번째 줄에 가장 작은 값을 출력한다.</p>
     </div>
     <section id="answer-box">
@@ -23,12 +23,12 @@
 
     <script type="module">
       const answerBox = document.querySelector("#answer-box");
-      import { timeCheck } from "../timeCheck.js";
+      import { timeCheck, render } from "../timeCheck.js";
       // 솔루션
       let solution;
 
       // 내 답안
-      solution = (...args) => {
+      solution = (args) => {
         let min = 100000000;
         for (let i = 0; i < args.length; i++) {
           if (args[i] < min) min = args[i];
@@ -39,16 +39,9 @@
       // 강사님 답안
       // 나랑 똑같음.
 
-      const answer = [timeCheck(solution, 5, 3, 7, 11, 2, 15, 17), timeCheck(solution, 10, 6, 4, 3, 9, 13, 6), timeCheck(solution, 978, 5, 1000, 234, 6, 123)];
+      const answer = [timeCheck(solution, [5, 3, 7, 11, 2, 15, 17]), timeCheck(solution, [10, 6, 4, 3, 9, 13, 6]), timeCheck(solution, [978, 5, 1000, 234, 6, 123])];
 
-      answer.map((a, idx) =>
-        answerBox.insertAdjacentHTML(
-          "beforeend",
-          ` <div>
-        <h3>${idx + 1}번 답</h3><p>${a}</p>
-      </div>`
-        )
-      );
+      render(answer, answerBox);
     </script>
   </body>
 </html>
