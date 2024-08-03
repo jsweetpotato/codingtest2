@@ -1,0 +1,153 @@
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="../style.css" />
+    <title>섹션4 - 6. 학급 회장(해쉬)</title>
+  </head>
+  <body>
+    <live-timer id="elem"></live-timer>
+    <script>
+      elem.addEventListener("tick", (event) => console.log(event.detail));
+    </script>
+    <h1>6. 학급 회장(해쉬)</h1>
+    <a href="../index.html">뒤로가기</a>
+    <div class="container">
+      <h2>문제</h2>
+      <p>
+        학급 회장을 뽑는데 후보로 기호 A, B, C, D, E 후보가 등록을 했습니다. <br />
+        투표용지에는 반 학생들이 자기가 선택한 후보의 기호(알파벳)가 쓰여져 있으며 선생님은 그 기호를 발표하고 있습니다. <br />
+        선생님의 발표가 끝난 후 어떤 기호의 후보가 학급 회장이 되었는지 출력하는 프로그램을 작 성하세요. 반드시 한 명의 학급회장이 선출되도록 투표결과가 나왔다고 가정합니다.
+      </p>
+
+      <div class="table-box"></div>
+
+      <h2>입력 설명</h2>
+      <p>
+        첫 줄에는 반 학생수 N(5<=N<=50)이 주어집니다. <br />
+        두 번째 줄에 N개의 투표용지에 쓰여져 있던 각 후보의 기호가 선생님이 발표한 순서대로 문자열로 입력됩니다.
+      </p>
+
+      <h2>출력설명</h2>
+      <p>학급 회장으로 선택된 기호를 출력합니다.</p>
+    </div>
+    <section id="answer-box">
+      <h2>결과</h2>
+    </section>
+
+    <script type="module">
+      const answerBox = document.querySelector("#answer-box");
+      import { timeCheck } from "../timeCheck.js";
+      // 솔루션
+      let solution;
+
+      // 내 답안
+      solution = (str) => {
+        let answer = "";
+        let max = 0;
+        let candidates = {};
+        [...str].forEach((v) => (candidates[v] ? candidates[v]++ : (candidates[v] = 1)));
+
+        for (const key in candidates) {
+          if (Object.prototype.hasOwnProperty.call(candidates, key)) {
+            const element = candidates[key];
+            if (element > max) {
+              max = element;
+              answer = key;
+            }
+          }
+        }
+
+        return answer;
+      };
+
+      solution = (str) => {
+        let answer = "";
+        let max = 0;
+
+        let candidates = {};
+
+        for (const c of str) {
+          candidates[c] = (candidates[c] || 0) + 1;
+        }
+
+        for (const key in candidates) {
+          if (Object.hasOwn(candidates, key)) {
+            const element = candidates[key];
+            if (element > max) {
+              max = element;
+              answer = key;
+            }
+          }
+        }
+
+        return answer;
+      };
+
+      // reduce를 배열의 모든 값 더하는 방식으로만 사용했었는데, wrtn답변에서 reduce를 사용해서 객체 값을 출력하는 것을 보고 신기했다.
+      // 선언형중에서 reduce가 가장 빠르다는데 이렇게 다른 방식으로 reduce를 사용하는 방법도 공부해봐야겠다.
+      // https://www.davideasaf.com/mapfilter-vs-reduce/
+
+      // 다만 기본 for loop문보다 메서드가 느리다는 평이 있어 성능적으로 그냥 for문을 사용하는게 더 좋을수도..?
+      // https://leanylabs.com/blog/js-forEach-map-reduce-vs-for-for_of/
+
+      // Wrtn의 개선 방안
+
+      // 1. Object.hasOwn 사용: Object.hasOwn 메서드는 ES2022에서 도입된 메서드입니다. 대신 candidates.hasOwnProperty(key)를 사용하는 것이 더 안전할 수 있습니다. 그러나, 이 경우에는 for...in 반복문을 사용할 필요가 없으므로, Object.entries를 사용하여 더 간결하게 작성할 수 있습니다.
+
+      // 2. 최대 투표 수 계산: 현재 코드에서는 후보자와 최대 투표 수를 계산하는 로직이 분리되어 있습니다. 이를 통합하여 가독성을 높일 수 있습니다.
+
+      // 3. ES6 문법 활용: 최신 JavaScript 문법을 활용하여 코드를 더 간결하게 만들 수 있습니다.
+
+      solution = (str) => {
+        const candidates = {};
+
+        for (const c of str) {
+          candidates[c] = (candidates[c] || 0) + 1;
+        }
+
+        // 후보자 중에서 가장 많은 투표를 받은 후보 찾기
+        let answer = Object.entries(candidates).reduce((prev, curr) => {
+          return curr[1] > prev[1] ? curr : prev;
+        });
+
+        return answer[0]; // 후보자의 기호 반환
+      };
+
+      // Wrtn의 다른 방안
+      // 또 다른 방법으로는 Map 객체를 사용하는 것입니다. Map은 키-값 쌍을 저장하며, 삽입 순서를 유지합니다.
+      solution = (str) => {
+        const candidates = new Map();
+
+        for (const c of str) {
+          candidates.set(c, (candidates.get(c) || 0) + 1);
+        }
+
+        let answer = "";
+        let maxVotes = 0;
+
+        for (const [key, value] of candidates) {
+          if (value > maxVotes) {
+            maxVotes = value;
+            answer = key;
+          }
+        }
+
+        return answer;
+      };
+
+      // 강사님 답안
+      // solution = () => {};
+
+      const answer = [timeCheck(solution, "BACBACCACCBDEDE")];
+
+      answer.map((a, idx) =>
+        answerBox.insertAdjacentHTML(
+          "beforeend",
+          ` <div>
+        <h3>${idx + 1}번 답</h3><p>${a}</p>
+      </div>`
+        )
+      );
+    </script>
+  </body>
+</html>
