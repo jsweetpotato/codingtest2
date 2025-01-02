@@ -4,40 +4,44 @@ const typeCheck = (target) => {
 
 export function timeCheck(func, ...args) {
   console.time("계산시간");
-  const answer = func(...args);
+  const outputValue = func(...args);
   console.timeEnd("계산시간");
-  let renderArg = "";
-  [...args].forEach((v) => {
-    const type = typeCheck(v);
+
+  let inputValue = "";
+  [...args].forEach((value) => {
+    const type = typeCheck(value);
     switch (type) {
       case "Array":
         let text = "";
-        if (Array.isArray(v[0]))
-          v.every((item) => {
-            return (text += `[${item}]${v.at(-1) === item ? "" : ", <br>"}`);
+
+        // 2차 배열일 경우
+        if (Array.isArray(value[0]))
+          value.every((item) => {
+            return (text += `[${item}]${value.at(-1) === item ? "" : ", <br>"}`);
           });
-        else text = v;
-        renderArg += `[${text}]`;
+        else text = value;
+
+        inputValue += `[${text}]`;
         break;
 
       default:
-        renderArg += `${v} <br />`;
+        inputValue += `${value} <br />`;
         break;
     }
   });
 
-  return [renderArg, answer];
+  return [inputValue, outputValue];
 }
 
-export function render(answer, answerBox) {
-  answer.map((a) =>
+export function render(answers, answerBox) {
+  answers.map(([inputValue, outputValue]) =>
     answerBox.insertAdjacentHTML(
       "beforeend",
       ` <div id="answer">
           <h3>입력</h3>
-          <p>${a[0]}</p>
+          <p>${inputValue}</p>
           <h3>출력</h3>
-          <p>${a[1]}</p>
+          <p>${outputValue}</p>
         </div>`
     )
   );
