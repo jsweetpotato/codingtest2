@@ -33,22 +33,51 @@
     <script type="module">
       const answerBox = document.querySelector("#answer-box");
       import { timeCheck, render } from "../timeCheck.js";
-      // 솔루션
+
       let solution;
 
-      // 내 답안
+      // ---- 내 답안 ----
       solution = (str) => {
         let result = "NO";
-        let reverse = [];
-        [...str].forEach((s) => reverse.unshift(s));
 
-        if (str.toLowerCase() === reverse.join("").toLowerCase()) result = "YES";
+        // 문자열 length가 홀수일 때 리턴 기릿
+        if (str.length % 2 !== 0) return result;
+
+        str = str.toLowerCase();
+
+        // 문자열 length가 짝수일 때
+        let reverse = [...str].reverse().join("");
+        // [...str].forEach((s) => reverse.unshift(s));
+        if (str === reverse) result = "YES";
 
         return result;
       };
 
-      // 강사님 답안
-      // solution = () => {};
+      // ---- 강사님 답안 ----
+      solution = (s) => {
+        let answer = "YES";
+        s = s.toLowerCase();
+
+        for (let i = 0; i < Math.floor(s.length / 2); i++) {
+          if (s[i] !== s[s.length - i - 1]) return "NO";
+        }
+
+        return answer;
+      };
+
+      // ---- 강사님 답안2 ----
+      solution = (s) => {
+        let answer = "YES";
+        s = s.toLowerCase();
+        if (s !== s.split("").reverse().join("")) return "NO";
+
+        return answer;
+      };
+
+      // 내가 한건 홀수면 바로 return하고
+      // 짝수면 reverse해서 비교하는 방법인데
+      // 강사님은 앞과 뒤에서 각각 1대1 대응되는 방식으로 회문 문자열을 찾는 방식으로 작성했다...
+      // 강사님 방법이 훨씬 좋은 방법인듯!
 
       const answer = [timeCheck(solution, "gooG")];
 
