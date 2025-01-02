@@ -31,13 +31,13 @@
     <script type="module">
       const answerBox = document.querySelector("#answer-box");
       import { timeCheck, render } from "../timeCheck.js";
-      // 솔루션
+
       let solution;
 
-      // 내 답안
+      // --- 내 답안 ---
       solution = (str) => {
         let result = "NO";
-        const filteredStr = str.toLowerCase().match(/([a-z]|[A-Z])/g);
+        const filteredStr = str.toLowerCase().match(/[a-z]/g);
 
         const origin = filteredStr.join("");
         const reverse = filteredStr.reverse().join("");
@@ -47,8 +47,17 @@
         return result;
       };
 
-      // 강사님 답안
-      // solution = () => {};
+      // --- 강사님 답안 ---
+      solution = (s) => {
+        let answer = "YES";
+        s = s.toLowerCase().replace(/[^a-z]/g, "");
+        if (s.split("").reverse().join("") !== s) return "NO";
+
+        return answer;
+      };
+
+      // 굳이 배열로 반환하는 match를 쓸 이유가 있을까?
+      // string 메서드인 replace를 사용하는게 더 효과적인듯
 
       const answer = [timeCheck(solution, "found7, time: study; Yduts; emit, 7Dnuof")];
 
