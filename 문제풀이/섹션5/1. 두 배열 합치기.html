@@ -38,7 +38,10 @@
       // 솔루션
       let solution;
 
-      // 내 답안
+      // 내 답안 1
+      // sort로 계산하면 시간복잡도가 n log n
+      // 그런데 two pointer algorithm를 사용하면 시간 복잡도가 n+m으로 더 단축된다고한다.
+
       solution = (arr1, arr2) => {
         let answer = [...arr1, ...arr2];
         answer.sort((a, b) => a - b);
@@ -46,10 +49,60 @@
         return answer;
       };
 
-      // 강사님 답안
-      // solution = () => {};
+      // 내 답안 2
+      // 요게 내가 작성한 two pointer algorithm
 
-      const answer = [timeCheck(solution, [1, 3, 5], [2, 3, 6, 7, 9])];
+      solution = (arr1, arr2) => {
+        const result = [];
+        const n = arr1.length;
+        const m = arr2.length;
+
+        // 인덱스 초기화
+        let p1 = 0;
+        let p2 = 0;
+
+        while (p1 < n && p2 < m) {
+          if (arr1[p1] <= arr2[p2]) {
+            result.push(arr1[p1]);
+            p1++;
+          } else {
+            result.push(arr2[p2]);
+            p2++;
+          }
+        }
+
+        // 남는거 다 넣기
+        result.push(...arr1.slice(p1), ...arr2.slice(p2));
+
+        return result;
+      };
+
+      // 강사님 답안
+      // 제일 빠름
+      solution = (arr1, arr2) => {
+        const answer = [];
+        const n = arr1.length;
+        const m = arr2.length;
+
+        // 인덱스 초기화
+        let p1 = 0;
+        let p2 = 0;
+
+        while (p1 < n && p2 < m) {
+          if (arr1[p1] <= arr2[p2]) answer.push(arr1[p1++]);
+          else answer.push(arr2[p2++]);
+        }
+
+        while (p1 < n) answer.push(arr1[p1++]);
+        while (p2 < m) answer.push(arr2[p2++]);
+
+        return answer;
+      };
+
+      const answer = [
+        timeCheck(solution, [1, 3, 5], [2, 3, 6, 7, 9]),
+        timeCheck(solution, [1, 2, 4, 6, 7, 8, 10, 11, 12, 16, 17, 18, 19, 21, 28, 32, 33, 34, 35, 36, 37, 38, 39, 40, 42, 45, 46, 47, 48, 49, 56, 72, 81, 90], [3, 4, 6, 7, 9, 12, 13, 15, 17, 18, 20])
+      ];
 
       render(answer, answerBox);
     </script>
