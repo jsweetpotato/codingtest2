@@ -74,7 +74,6 @@
         let rp = 0;
 
         while (rp < arr.length) {
-          cycle_count++;
           if (sum === N) {
             sum -= arr[lp++];
             answer++;
@@ -98,9 +97,7 @@
         for (let rt = 0; rt < arr.length; rt++) {
           sum += arr[rt];
           if (sum === N) answer++;
-          cycle_count++;
           while (sum >= N) {
-            cycle_count++;
             sum -= arr[lt++];
             if (sum === N) answer++;
           }
