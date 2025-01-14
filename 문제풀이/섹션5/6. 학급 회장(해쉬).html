@@ -111,20 +111,18 @@
         return answer[0]; // 후보자의 기호 반환
       };
 
-      // Wrtn의 다른 방안
-      // 또 다른 방법으로는 Map 객체를 사용하는 것입니다. Map은 키-값 쌍을 저장하며, 삽입 순서를 유지합니다.
+      // Map 사용시
       solution = (str) => {
-        const candidates = new Map();
-
-        for (const c of str) {
-          candidates.set(c, (candidates.get(c) || 0) + 1);
-        }
-
         let answer = "";
         let maxVotes = 0;
+        const map = new Map();
 
-        for (const [key, value] of candidates) {
-          if (value > maxVotes) {
+        for (const c of str) {
+          map.set(c, (map.get(c) || 1) + 1);
+        }
+
+        for (const [key, value] of map) {
+          if (maxVotes < value) {
             maxVotes = value;
             answer = key;
           }
@@ -134,7 +132,24 @@
       };
 
       // 강사님 답안
-      // solution = () => {};
+      solution = (s) => {
+        let answer = 0;
+        let sH = new Map();
+        for (let x of s) {
+          if (sH.has(x)) sH.set(x, sH.get(x) + 1);
+          else sH.set(x, 1);
+        }
+
+        let max = Number.MIN_SAFE_INTEGER;
+        for (let [key, value] of sH) {
+          if (value > max) {
+            max = value;
+            answer = key;
+          }
+        }
+
+        return answer;
+      };
 
       const answer = [timeCheck(solution, "BACBACCACCBDEDE")];
 
