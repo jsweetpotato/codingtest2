@@ -116,13 +116,18 @@ td {
   margin: 0 0 8px 0;
 }
 
-#answer p {
-  word-break: break-all;
-  color: var(--color-p);
+#answer h3.out {
+  padding-top: 16px;
+  margin-top: 16px;
+  border-top: 1px solid rgba(128, 128, 128, 0.5);
 }
 
-#answer p:not(:last-child) {
-  padding-bottom: 16px;
-  margin-bottom: 16px;
-  border-bottom: 1px solid rgba(128, 128, 128, 0.5);
+#answer code {
+  font-size: 1rem;
+  display: block;
+  margin-bottom: 8px;
+  line-height: 1.2;
+  font-variant-numeric: tabular-nums;
+  font-family: inherit;
+  color: var(--color-p);
 }
