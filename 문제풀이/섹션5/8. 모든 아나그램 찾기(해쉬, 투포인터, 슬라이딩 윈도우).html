@@ -34,7 +34,16 @@
       import { timeCheck, render } from "../timeCheck.js";
       // 솔루션
       let solution;
+      const compare = (map1, compareMap) => {
+        if (map1.size !== compareMap.size) return false;
 
+        for (let [key, value] of compareMap) {
+          if (!map1.has(key)) return false;
+          else if (map1.get(key) !== value) return false;
+        }
+
+        return true;
+      };
       // 내 답안
       solution = (str1, str2) => {
         let answer = 0;
@@ -44,17 +53,6 @@
         for (const c of str2) {
           tH.set(c, (tH.get(c) || 0) + 1);
         }
-
-        const compare = (map1, compareMap) => {
-          if (map1.size !== compareMap.size) return false;
-
-          for (let [key, value] of compareMap) {
-            if (!map1.has(key)) return false;
-            else if (map1.get(key) !== value) return false;
-          }
-
-          return true;
-        };
 
         let lt = 0;
 
@@ -76,13 +74,13 @@
       };
 
       // 강사님 답안
-      function compareMaps(map1, map2) {
+      const compareMaps = (map1, map2) => {
         if (map1.size !== map2.size) return false;
         for (let [key, val] of map1) {
           if (!map2.has(key) || map2.get(key) !== val) return false;
         }
         return true;
-      }
+      };
 
       solution = (s, t) => {
         let answer = 0;
@@ -103,8 +101,8 @@
 
         let lt = 0;
         for (let rt = len; rt < s.length; rt++) {
-          if (sH.has(s[i])) sH.set(s[i], sH.get(s[i]) + 1);
-          else sH.set(s[i], 1);
+          if (sH.has(s[rt])) sH.set(s[rt], sH.get(s[rt]) + 1);
+          else sH.set(s[rt], 1);
 
           if (compareMaps(sH, tH)) answer++;
 
@@ -113,6 +111,8 @@
 
           lt++;
         }
+
+        return answer;
       };
 
       const answer = [timeCheck(solution, "bacaAacba", "abc")];
