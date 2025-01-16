@@ -17,11 +17,11 @@ export function timeCheck(func, ...args) {
         // 2차 배열일 경우
         if (Array.isArray(value[0]))
           value.every((item) => {
-            return (text += `[${item}]${value.at(-1) === item ? "" : ", <br>"}`);
+            return (text += `[${item}]${value.at(-1) === item ? "" : ", "}`); // <br/> 넣을까 말까까
           });
         else text = value;
 
-        inputValue += `[${text}]`;
+        inputValue += `[${text}] <br>`;
         break;
 
       default:
