@@ -39,7 +39,7 @@ export function render(answers, answerBox) {
       ` <div id="answer">
           <h3>입력</h3>
           ${inputValue.map((v) => `<code>${v}</code>`).join("")}
-          <h3>출력</h3>
+          <h3 class="out">출력</h3>
           <p>${outputValue}</p>
         </div>`
     )
