@@ -8,25 +8,23 @@ export function timeCheck(func, ...args) {
   console.timeEnd("계산시간");
 
   let inputValue = [];
-  [...args].forEach((value, i) => {
+  [...args].forEach((value) => {
     const type = typeCheck(value);
-
     switch (type) {
       case "Array":
         // 2차 배열일 경우
-        if (Array.isArray(value[0])) {
+        if (!Array.isArray(value[0])) inputValue.push(`[${value}]`);
+        else {
           let text = "";
-          value.forEach((item) => (text += `&nbsp&nbsp[${item}]${value.at(-1) === item ? "" : ", <br/>"}`));
-
-          inputValue[i] = `[<br/>${text}<br/>] `;
-        } else {
-          inputValue[i] = `[${value}] `;
+          value.forEach((item) => {
+            return (text += `&nbsp[${item}]${value.at(-1) === item ? "" : ", <br>"}`);
+          });
+          inputValue.push(`[<br>${text}<br>]`);
         }
-
         break;
 
       default:
-        inputValue[i] = `${value}`;
+        inputValue.push(value);
         break;
     }
   });
@@ -40,8 +38,8 @@ export function render(answers, answerBox) {
       "beforeend",
       ` <div id="answer">
           <h3>입력</h3>
-           ${inputValue.map((v) => `<code>${v}</code>`).join("")}
-          <h3 class="out">출력</h3>
+          ${inputValue.map((v) => `<code>${v}</code>`).join("")}
+          <h3>출력</h3>
           <p>${outputValue}</p>
         </div>`
     )
