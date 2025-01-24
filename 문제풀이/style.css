@@ -8,7 +8,7 @@
 } */
 
 :root {
-  --color-p: #dddddd;
+  --color-p: #e0e0e0;
 }
 
 html {
@@ -57,6 +57,13 @@ td {
   border-collapse: collapse;
 }
 
+ul,
+ol {
+  color: var(--color-p);
+  line-height: 1.5;
+  /* list-style-position: outside; */
+}
+
 .container h2 {
   margin-top: 1.4em;
 }
@@ -98,6 +105,54 @@ td {
   background-color: #1bd1ff;
 }
 
+/*^ 쇠막대기 */
+.쇠막대기 {
+  line-height: 0.8;
+  color: var(--color-p);
+  margin-block: 32px;
+  font-size: xx-large;
+  display: flex;
+  gap: 6px;
+}
+
+.쇠막대기 div {
+  display: flex;
+  gap: 6px;
+}
+
+.쇠막대기 :not(.레이저) {
+  border-left: 2px dashed gray;
+  border-right: 2px dashed gray;
+  border-bottom: 6px solid var(--color-p);
+}
+
+.쇠막대기 > :not(.레이저) {
+  height: 140px;
+}
+
+.쇠막대기 > div > :not(.레이저) {
+  height: 100px;
+}
+
+.쇠막대기 > div > div > :not(.레이저) {
+  height: 60px;
+}
+
+.쇠막대기 .레이저 {
+  position: relative;
+  color: salmon;
+}
+
+.쇠막대기 .레이저::after {
+  position: absolute;
+  content: "";
+  width: 22px;
+  height: 110px;
+  background-color: salmon;
+  clip-path: polygon(20% 90%, 48% 90%, 48% 0, 56% 0, 56% 90%, 84% 90%, 52% 100%);
+  top: 35px;
+}
+
 /*^ #answer-box */
 
 #answer-box h2 {
@@ -105,8 +160,9 @@ td {
 }
 
 #answer {
-  margin-block: 14px;
-  padding: 20px 24px 24px 24px;
+  margin-inline: -2px;
+  margin-block: 12px;
+  padding: 26px 18px 30px 18px;
   background-color: #2c2c2c;
   box-shadow: 1px 2px 8px 0px #0000002c, inset 0px 0px 2px 0px #6d6d6d2a;
   border-radius: 13px;
@@ -117,17 +173,37 @@ td {
 }
 
 #answer h3.out {
-  padding-top: 16px;
-  margin-top: 16px;
+  padding-top: 20px;
+  margin-top: 20px;
   border-top: 1px solid rgba(128, 128, 128, 0.5);
 }
 
 #answer code {
   font-size: 1rem;
+  margin-bottom: 2px;
   display: block;
-  margin-bottom: 8px;
   line-height: 1.2;
   font-variant-numeric: tabular-nums;
   font-family: inherit;
   color: var(--color-p);
+}
+
+#answer p {
+  line-height: 1;
+}
+
+#code-button {
+  background-color: transparent;
+  border: transparent;
+  text-align: left;
+  cursor: pointer;
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }

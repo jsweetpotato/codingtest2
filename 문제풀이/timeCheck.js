@@ -38,10 +38,17 @@ export function render(answers, answerBox) {
       "beforeend",
       ` <div id="answer">
           <h3>입력</h3>
+          <button id="code-button">
           ${inputValue.map((v) => `<code>${v}</code>`).join("")}
+          </button>
           <h3 class="out">출력</h3>
           <p>${outputValue}</p>
         </div>`
     )
   );
+
+  document.querySelector("#code-button").addEventListener("click", (e) => {
+    navigator.clipboard.writeText(e.currentTarget.innerText);
+    alert("복사완료!");
+  });
 }
