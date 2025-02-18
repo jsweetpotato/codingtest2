@@ -61,16 +61,17 @@
 
       // --- 강사님 답안 ---
       solution = (count, arr) => {
-        let answer = arr.split(" ");
+        arr = arr.split(" ");
+
         for (let i = 0; i < arr.length; i++) {
           let idx = i;
           for (let j = i + 1; j < arr.length; j++) {
             if (arr[j] < arr[idx]) idx = j;
-
-            [arr[i], arr[idx]] = [arr[idx], arr[i]];
           }
+          [arr[i], arr[idx]] = [arr[idx], arr[i]];
         }
-        return answer.join(" ");
+
+        return arr.join(" ");
       };
 
       const answer = [timeCheck(solution, 6, "13 5 11 7 23 15")];
