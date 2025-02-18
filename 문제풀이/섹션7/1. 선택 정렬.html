@@ -1,0 +1,80 @@
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="../style.css" />
+    <title>섹션7 - 1. 선택 정렬</title>
+  </head>
+  <body>
+    <h1>1. 선택 정렬</h1>
+    <a href="../../index.html">뒤로가기</a>
+    <div class="container">
+      <h2>문제</h2>
+      <p>N개이 숫자가 입력되면 오름차순으로 정렬하여 출력하는 프로그램을 작성하세요. 정렬하는 방법은 선택정렬입니다.</p>
+
+      <h3>입력 설명</h3>
+      <p>첫 번째 줄에 자연수 N(1<=N<=100)이 주어집니다.</p>
+      <p>두 번째 줄에 N개의 자연수가 공백을 사이에 두고 입력됩니다. 각 자연수는 정수형 범위 안에 있습니다.</p>
+
+      <h3>출력설명</h3>
+      <p>오름차순으로 정렬된 수열을 출력합니다.</p>
+    </div>
+    <section id="answer-box">
+      <h2>결과</h2>
+    </section>
+
+    <script type="module">
+      const answerBox = document.querySelector("#answer-box");
+      import { timeCheck, render } from "../timeCheck.js";
+
+      let solution;
+
+      // --- 내 답안 ---
+      solution = (count, numbers) => {
+        let numbersArr = numbers.split(" ").map(Number);
+        const answer = [];
+
+        for (let i = 0; i < count; i++) {
+          const min = Math.min(...numbersArr);
+          answer.push(min);
+          numbersArr = numbersArr.filter((v) => v !== min);
+        }
+
+        return answer.join(" ");
+      };
+      solution = (count, numbers) => {
+        const numbersArr = numbers.split(" ").map(Number);
+
+        for (let i = 0; i < count; i++) {
+          let idx = i;
+
+          for (let j = i + 1; j < numbersArr.length; j++) {
+            if (numbersArr[idx] > numbersArr[j]) idx = j;
+          }
+
+          const origin = numbersArr[i];
+          numbersArr[i] = numbersArr[idx];
+          numbersArr[idx] = origin;
+        }
+
+        return numbersArr.join(" ");
+      };
+
+      // --- 강사님 답안 ---
+      solution = (count, arr) => {
+        let answer = arr.split(" ");
+        for (let i = 0; i < arr.length; i++) {
+          let idx = i;
+          for (let j = i + 1; j < arr.length; j++) {
+            if (arr[j] < arr[idx]) idx = j;
+
+            [arr[i], arr[idx]] = [arr[idx], arr[i]];
+          }
+        }
+      };
+
+      const answer = [timeCheck(solution, 6, "13 5 11 7 23 15")];
+
+      render(answer, answerBox);
+    </script>
+  </body>
+</html>
